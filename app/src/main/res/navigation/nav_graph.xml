@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newQuotationFragment"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <fragment
+        android:id="@+id/newQuotationFragment"
+        android:name="dadm.csechram.QuotesApp.ui.newquotation.NewQuotationFragment"
+        android:label="NewQuotationFragment"
+        tools:layout="@layout/fragment_new_quotation"/>
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="dadm.csechram.QuotesApp.ui.about.aboutDialogFragment"
+        android:label="aboutDialogFragment"
+        tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="dadm.csechram.QuotesApp.ui.favourites.favouritesFragment"
+        android:label="favouritesFragment"
+        tools:layout="@layout/fragment_favourites"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dadm.csechram.QuotesApp.ui.settings.settingsFragment"
+        android:label="settingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+</navigation>
