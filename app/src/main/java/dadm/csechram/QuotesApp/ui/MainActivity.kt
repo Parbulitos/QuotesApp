@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navController = binding.NavHostFragment.getFragment<NavHostFragment>().navController
-        binding.bottomNavigationView.setupWithNavController(navController)
+        (binding.bottomNavigationView as NavigationBarView).setupWithNavController(navController)
         setSupportActionBar(binding.toolbar)
         val appBarConfiguration = AppBarConfiguration.Builder(R.layout.fragment_new_quotation,R.layout.fragment_favourites,R.layout.fragment_settings,R.layout.fragment_about).build()
         setupActionBarWithNavController(navController,appBarConfiguration)
