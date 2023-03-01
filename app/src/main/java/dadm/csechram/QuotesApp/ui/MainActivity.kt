@@ -2,10 +2,12 @@ package dadm.csechram.QuotesApp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationBarView
 import dadm.csechram.QuotesApp.R
 import dadm.csechram.QuotesApp.databinding.ActivityMainBinding
 
