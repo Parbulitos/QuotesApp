@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="@+id/NavHostFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/materialToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:titleTextColor="@color/black" />
