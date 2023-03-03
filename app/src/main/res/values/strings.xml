@@ -8,4 +8,5 @@
     <string name="favourites">Favourites</string>
     <string name="new_quotation">New Quotation</string>
     <string name="aboutinfo_string">Quotes App by \n\nCarlos\n\nexample@example.com\n\nDeveloped for DADM 2023</string>
+    <string name="refresh">Refresh</string>
 </resources>
