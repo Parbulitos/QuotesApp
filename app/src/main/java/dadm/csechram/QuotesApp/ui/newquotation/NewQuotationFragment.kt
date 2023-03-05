@@ -17,11 +17,10 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentNewQuotationBinding.bind(view)
-        viewModel.userNameGetter.observe(viewLifecycleOwner){
-
+        viewModel.userNameGetter.observe(viewLifecycleOwner){username: String ->
+            binding.tvGreetings.text = getString(R.string.greetings, username)
         }
-        TODO("Fix this shit, no muestra el nombre")
-        binding.tvGreetings.text = getString(R.string.greetings, viewModel.userNameGetter)
+
     }
 
     override fun onDestroyView() {
