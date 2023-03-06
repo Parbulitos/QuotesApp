@@ -74,6 +74,5 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
         }else{
             return false
         }
-
     }
 }
