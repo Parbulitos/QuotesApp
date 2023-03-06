@@ -11,6 +11,7 @@ class NewQuotationViewModel : ViewModel() {
     private val userName : MutableLiveData<String> = MutableLiveData(getUserName())
     private val quotation : MutableLiveData<Quotation> = MutableLiveData()
     private val isRefreshing : MutableLiveData<Boolean> = MutableLiveData(false)
+    private val favButtonVisible : MutableLiveData<Boolean> = MutableLiveData(false)
 
     //Inmutable properties
     val userNameGetter: LiveData<String> get() {
@@ -22,7 +23,11 @@ class NewQuotationViewModel : ViewModel() {
     val isRefreshingGetter: LiveData<Boolean> get() {
         return this.isRefreshing
     }
+    val favButtonVisibleGetter: LiveData<Boolean> get() {
+        return this.favButtonVisible
+    }
     val isGreetingsVisible = Transformations.map(quotation){it == null}
+
     //Getters
     private fun getUserName() : String{
         return setOf("Alice","Bob","Charlie","David","Emma").random()
@@ -32,5 +37,10 @@ class NewQuotationViewModel : ViewModel() {
         val num = (0..99).random().toString()
         quotation.value = Quotation(num,"Quotation text #$num", "Author #$num")
         isRefreshing.value = false
+        favButtonVisible.value = true
+    }
+
+    fun addToFavourites(){
+        favButtonVisible.value = !favButtonVisible.value!!
     }
 }

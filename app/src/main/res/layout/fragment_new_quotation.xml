@@ -41,12 +41,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:src="@drawable/refresh_vector"
+            android:id="@+id/flotatingFavButton"
+            android:src="@drawable/add_favourite_vector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:contentDescription="@string/refresh"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:visibility="invisible">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </FrameLayout>

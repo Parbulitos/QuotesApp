@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_about"/>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="dadm.csechram.QuotesApp.ui.favourites.favouritesFragment"
+        android:name="dadm.csechram.QuotesApp.ui.favourites.FavouritesFragment"
         android:label="favouritesFragment"
         tools:layout="@layout/fragment_favourites"/>
     <fragment

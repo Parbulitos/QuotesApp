@@ -41,7 +41,10 @@ class MainActivity : AppCompatActivity(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        navController.navigate(R.id.aboutDialogFragment)
-        return true
+        if(menuItem.itemId == R.id.aboutDialogFragment){
+            navController.navigate(R.id.aboutDialogFragment)
+            return true
+        }
+        return false
     }
 }
