@@ -11,6 +11,7 @@ import dadm.csechram.QuotesApp.ui.newquotation.NewQuotationViewModel
 class FavouritesViewModel : ViewModel() {
     private val favouriteList : MutableLiveData<List<Quotation>> = MutableLiveData<List<Quotation>>(getFavouriteQuotations())
 
+
     val favouriteListGetter : LiveData<List<Quotation>> get(){
         return this.favouriteList
     }
@@ -26,6 +27,12 @@ class FavouritesViewModel : ViewModel() {
 
     fun deleteAllQuotations(){
         favouriteList.value = emptyList()
+    }
+
+    fun deleteQuotationAtPosition(position: Int){
+        var favouritesListCopy = favouriteList.value?.toMutableList()
+        favouritesListCopy?.removeAt(position)
+        favouriteList.value = favouritesListCopy?: emptyList()
     }
 
 }
