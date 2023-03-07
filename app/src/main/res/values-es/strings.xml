@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuotesApp</string>
+    <string name="new_quotation_string">Obtener nueva cita</string>
+    <string name="about_string">Informacion</string>
+    <string name="favourites_quotations_string">Citas favoritas</string>
+    <string name="settings_string">Ajustes</string>
+    <string name="settings">Ajustes</string>
+    <string name="favourites">Favoritos</string>
+    <string name="new_quotation">Nueva cita</string>
+    <string name="aboutinfo_string">Quotes App por \\n\\nCarlos\\n\\nexample@example.com\\n\\nDeveloped for DADM 2023</string>
+    <string name="refresh">Actualizar</string>
+    <string name="greetings">Hola %1s!, \\n\\nActualiza para obtener una nueva cita\\n\\n(desliza hacia abajo o pulsa el boton del menu)</string>
+    <string name="quotePresentation">Autor: %1s! \\n\\nCita: %1s!</string>
+    <string name="refresh_string">Actualizar</string>
+    <string name="delete_all_quotations_string">Eliminar todas las citas</string>
+</resources>

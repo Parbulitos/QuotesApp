@@ -9,12 +9,15 @@ import android.view.View
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import com.google.android.material.snackbar.Snackbar
 import dadm.csechram.QuotesApp.ui.newquotation.NewQuotationViewModel
 import dadm.csechram.QuotesApp.R
 import dadm.csechram.QuotesApp.databinding.FragmentNewQuotationBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
-class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProvider {
+@AndroidEntryPoint
+class NewQuotationFragment @Inject constructor() : Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NewQuotationViewModel by viewModels()
@@ -47,6 +50,12 @@ class NewQuotationFragment : Fragment(R.layout.fragment_new_quotation), MenuProv
                 binding.flotatingFavButton.setImageResource(R.drawable.favourites_vector)
             }
 
+        }
+        viewModel.exceptionGetter.observe(viewLifecycleOwner){exception ->
+            if(exception != null){
+                Snackbar.make(view, exception.message?: "Npi",Snackbar.LENGTH_SHORT )
+            }
+            viewModel.resetError()
         }
         binding.flotatingFavButton.setOnClickListener{
             viewModel.addToFavourites()

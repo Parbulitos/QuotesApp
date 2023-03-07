@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dadm.csechram.QuotesApp.R
 import dadm.csechram.QuotesApp.databinding.FragmentFavouritesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDialogFragment.ButtonActionInterface, MenuProvider{
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!

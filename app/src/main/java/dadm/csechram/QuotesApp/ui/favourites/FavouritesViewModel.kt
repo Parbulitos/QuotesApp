@@ -1,14 +1,15 @@
 package dadm.csechram.QuotesApp.ui.favourites
 
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dadm.csechram.QuotesApp.domain.model.Quotation
-import dadm.csechram.QuotesApp.ui.newquotation.NewQuotationViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavouritesViewModel : ViewModel() {
+@HiltViewModel
+class FavouritesViewModel @Inject constructor(): ViewModel() {
     private val favouriteList : MutableLiveData<List<Quotation>> = MutableLiveData<List<Quotation>>(getFavouriteQuotations())
 
 
