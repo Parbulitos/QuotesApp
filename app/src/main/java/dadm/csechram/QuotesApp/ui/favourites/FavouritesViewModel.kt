@@ -20,9 +20,13 @@ class FavouritesViewModel : ViewModel() {
     }
 
     private fun getFavouriteQuotations() : List<Quotation>{
-        return (1..20).map {
-            val id = (0..50).random().toString()
-            Quotation(id,"Quotation $id","Author $id") }
+        return listOf(
+            Quotation("1","I have no special talent. I am only passionately curious.","Albert Einstein"),
+            Quotation("2","El que la sigue la consige","Anonymus")
+        ) + (3..20).map{
+            val id = (0..99).random().toString()
+            Quotation(id,"Quotation $id","Author $id")
+        }
     }
 
     fun deleteAllQuotations(){

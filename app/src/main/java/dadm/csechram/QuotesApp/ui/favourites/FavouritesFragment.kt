@@ -1,6 +1,9 @@
 package dadm.csechram.QuotesApp.ui.favourites
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.media.MediaRouter.SimpleCallback
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.Menu
@@ -12,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import dadm.csechram.QuotesApp.R
 import dadm.csechram.QuotesApp.databinding.FragmentFavouritesBinding
 
@@ -44,7 +48,20 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDial
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
-        val adapter = QuotationListAdapter()
+        val adapter = QuotationListAdapter(object: QuotationListAdapter.ItemClicked{
+            override fun onClick(author: String) {
+                if(author.equals("Anonymus")){
+                    Snackbar.make(requireContext(),view,"It's not possible to gather information",Snackbar.LENGTH_SHORT).show()
+                }else{
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://en.wikipedia.org/wiki/Special:Search?search=$author"))
+                    try{
+                        startActivity(intent)
+                    }catch (e : ActivityNotFoundException){
+                        Snackbar.make(requireContext(),view,"It's not possible to execute this action",Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
         binding.recyclerViewFavourites.adapter = adapter
         viewModel.favouriteListGetter.observe(viewLifecycleOwner){list->
             adapter.submitList(list)
