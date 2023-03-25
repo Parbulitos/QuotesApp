@@ -53,7 +53,7 @@ class NewQuotationFragment @Inject constructor() : Fragment(R.layout.fragment_ne
         }
         viewModel.exceptionGetter.observe(viewLifecycleOwner){exception ->
             if(exception != null){
-                Snackbar.make(view, exception.message?: "",Snackbar.LENGTH_SHORT ).show()
+                Snackbar.make(view, "Error: Couldn't get the quote",Snackbar.LENGTH_SHORT ).show()
                 viewModel.resetError()
             }
         }

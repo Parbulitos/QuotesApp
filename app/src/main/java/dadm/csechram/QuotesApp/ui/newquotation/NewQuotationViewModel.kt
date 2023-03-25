@@ -15,6 +15,7 @@ class NewQuotationViewModel @Inject constructor(private val repository: NewQuota
     private val isRefreshing : MutableLiveData<Boolean> = MutableLiveData(false)
     private val favButtonVisible : MutableLiveData<Boolean> = MutableLiveData(false)
     private val exception : MutableLiveData<Throwable?> = MutableLiveData(null)
+
     //Inmutable properties
     val userNameGetter: LiveData<String> get() {
         return this.userName
@@ -39,6 +40,7 @@ class NewQuotationViewModel @Inject constructor(private val repository: NewQuota
     }
     fun getNewQuotation(){
         isRefreshing.value = true
+        //Coroutine launch
         viewModelScope.launch {
             repository.getNewQuotation().fold(
                 onSuccess = {
@@ -47,6 +49,7 @@ class NewQuotationViewModel @Inject constructor(private val repository: NewQuota
                     exception.value = it
             })
         }
+        //End of coroutine
         isRefreshing.value = false
         favButtonVisible.value = true
     }

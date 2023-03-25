@@ -1,16 +1,15 @@
 package dadm.csechram.QuotesApp.data.newquotation
 
-import dadm.csechram.QuotesApp.data.newquotation.model.toDomain
 import dadm.csechram.QuotesApp.domain.model.Quotation
-import dadm.csechram.QuotesApp.utils.NoInternetException
 import javax.inject.Inject
 
-class NewQuotationRepositoryImpl @Inject constructor(private val dataSource: NewQuotationDataSource,
-private val connecitivyChecker: ConnectivityChecker): NewQuotationRepository  {
+class NewQuotationRepositoryImpl @Inject constructor() : NewQuotationRepository{
     override suspend fun getNewQuotation(): Result<Quotation> {
-        if(connecitivyChecker.isConnectionAvailable()){
-            return dataSource.getQuotation(arrayOf("en", "ru", "xx").random()).toDomain()
+        var num = (0..9).random()
+        if(num != 0){
+            return Result.success(Quotation("$num","Quote: $num", "Author $num"))
+        }else{
+            return Result.failure(Exception("Error getting the quote"))
         }
-        return Result.failure(NoInternetException())
     }
 }
