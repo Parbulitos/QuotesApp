@@ -53,9 +53,9 @@ class NewQuotationFragment @Inject constructor() : Fragment(R.layout.fragment_ne
         }
         viewModel.exceptionGetter.observe(viewLifecycleOwner){exception ->
             if(exception != null){
-                Snackbar.make(view, exception.message?: "Npi",Snackbar.LENGTH_SHORT )
+                Snackbar.make(view, exception.message?: "",Snackbar.LENGTH_SHORT ).show()
+                viewModel.resetError()
             }
-            viewModel.resetError()
         }
         binding.flotatingFavButton.setOnClickListener{
             viewModel.addToFavourites()

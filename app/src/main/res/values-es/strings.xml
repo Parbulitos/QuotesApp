@@ -14,4 +14,5 @@
     <string name="quotePresentation">Autor: %1s! \\n\\nCita: %1s!</string>
     <string name="refresh_string">Actualizar</string>
     <string name="delete_all_quotations_string">Eliminar todas las citas</string>
+    <string name="no_internet">Sin conexion a internet</string>
 </resources>

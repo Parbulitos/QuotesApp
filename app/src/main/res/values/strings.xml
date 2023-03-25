@@ -13,4 +13,5 @@
     <string name="quotePresentation">Author: %1s! \n\nQuote: %1s!</string>
     <string name="refresh_string">Refresh</string>
     <string name="delete_all_quotations_string">Delete all quotations</string>
+    <string name="no_internet">No internet connection</string>
 </resources>

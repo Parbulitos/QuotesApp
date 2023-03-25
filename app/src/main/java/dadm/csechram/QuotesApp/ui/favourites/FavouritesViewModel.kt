@@ -1,9 +1,6 @@
 package dadm.csechram.QuotesApp.ui.favourites
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dadm.csechram.QuotesApp.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,7 +13,7 @@ class FavouritesViewModel @Inject constructor(): ViewModel() {
     val favouriteListGetter : LiveData<List<Quotation>> get(){
         return this.favouriteList
     }
-    val isDeleteAllVisible = Transformations.map(favouriteList){list ->
+    val isDeleteAllVisible = favouriteList.map{list ->
         list.isNotEmpty()
     }
 
