@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import dadm.csechram.QuotesApp.ui.newquotation.NewQuotationViewModel
 import dadm.csechram.QuotesApp.R
 import dadm.csechram.QuotesApp.databinding.FragmentNewQuotationBinding
+import dadm.csechram.QuotesApp.utils.NoInternetException
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -53,7 +54,12 @@ class NewQuotationFragment @Inject constructor() : Fragment(R.layout.fragment_ne
         }
         viewModel.exceptionGetter.observe(viewLifecycleOwner){exception ->
             if(exception != null){
-                Snackbar.make(view, "Error: Couldn't get the quote",Snackbar.LENGTH_SHORT ).show()
+                if(exception is NoInternetException){
+                    Snackbar.make(view, "Error: No Connection available",Snackbar.LENGTH_SHORT ).show()
+                }else{
+                    Snackbar.make(view, "Error: Couldn't get the quote",Snackbar.LENGTH_SHORT ).show()
+                }
+
                 viewModel.resetError()
             }
         }

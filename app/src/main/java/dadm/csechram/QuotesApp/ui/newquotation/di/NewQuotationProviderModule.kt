@@ -16,12 +16,13 @@ import javax.inject.Singleton
 @InstallIn (SingletonComponent::class)
 class NewQuotationProviderModule {
     @Provides
+    @Singleton
     fun provideConnectivityManager(@ApplicationContext context : Context): ConnectivityManager {
         return context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
     }
-    @Provides
+    /*@Provides
     @Singleton
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder().baseUrl("https://api.forismatic.com/").addConverterFactory(MoshiConverterFactory.create()).build()
-    }
+    }*/
 }
