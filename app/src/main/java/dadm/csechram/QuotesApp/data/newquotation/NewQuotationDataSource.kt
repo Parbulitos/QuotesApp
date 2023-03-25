@@ -1,7 +1,8 @@
 package dadm.csechram.QuotesApp.data.newquotation
 
-import dadm.csechram.QuotesApp.domain.model.Quotation
+import dadm.csechram.QuotesApp.data.newquotation.model.QuotationDto
+import retrofit2.Response
 
 interface NewQuotationDataSource {
-    suspend fun getQuotation(): Result<Quotation>
+    suspend fun getQuotation(): Response<QuotationDto>
 }
