@@ -2,15 +2,15 @@ package dadm.csechram.QuotesApp.ui.newquotation
 
 import androidx.lifecycle.*
 import dadm.csechram.QuotesApp.data.newquotation.NewQuotationRepository
+import dadm.csechram.QuotesApp.data.settings.SettingsRepository
 import dadm.csechram.QuotesApp.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewQuotationViewModel @Inject constructor(private val repository: NewQuotationRepository) : ViewModel() {
+class NewQuotationViewModel @Inject constructor(private val repository: NewQuotationRepository, private val settingsRepository: SettingsRepository) : ViewModel() {
     //Private properties
-    private val userName : MutableLiveData<String> = MutableLiveData(getUserName())
     private val quotation : MutableLiveData<Quotation> = MutableLiveData()
     private val isRefreshing : MutableLiveData<Boolean> = MutableLiveData(false)
     private val favButtonVisible : MutableLiveData<Boolean> = MutableLiveData(false)
@@ -18,7 +18,7 @@ class NewQuotationViewModel @Inject constructor(private val repository: NewQuota
 
     //Inmutable properties
     val userNameGetter: LiveData<String> get() {
-        return this.userName
+        return settingsRepository.getUsername().asLiveData()
     }
     val quotationGetter: LiveData<Quotation> get() {
         return this.quotation
