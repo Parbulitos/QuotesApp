@@ -35,7 +35,7 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDial
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            viewModel.deleteQuotationAtPosition(viewHolder.adapterPosition)
+            //viewModel.deleteQuotationAtPosition(viewHolder.adapterPosition)
         }
 
         override fun isLongPressDragEnabled(): Boolean {
@@ -69,9 +69,9 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDial
             adapter.submitList(list)
         }
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        viewModel.isDeleteAllVisible.observe(viewLifecycleOwner){isVisible ->
+        /*viewModel.isDeleteAllVisible.observe(viewLifecycleOwner){isVisible ->
             if(!isVisible) requireActivity().invalidateMenu()
-        }
+        }*/
         touchHelper.attachToRecyclerView(binding.recyclerViewFavourites)
     }
 
@@ -81,7 +81,7 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDial
     }
 
     override fun positiveAction() {
-        viewModel.deleteAllQuotations()
+        //viewModel.deleteAllQuotations()
     }
 
     override fun negativeAction() {}
@@ -100,6 +100,6 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites), DeleteAllDial
 
     override fun onPrepareMenu(menu: Menu) {
         super.onPrepareMenu(menu)
-        menu.findItem(R.id.deleteMenuItem).isEnabled = viewModel.isDeleteAllVisible.value!!
+        //menu.findItem(R.id.deleteMenuItem).isEnabled = viewModel.isDeleteAllVisible.value!!
     }
 }
