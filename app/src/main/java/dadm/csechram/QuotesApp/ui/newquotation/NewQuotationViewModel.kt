@@ -1,6 +1,7 @@
 package dadm.csechram.QuotesApp.ui.newquotation
 
 import androidx.lifecycle.*
+import dadm.csechram.QuotesApp.data.newquotation.NewQuotationManager
 import dadm.csechram.QuotesApp.data.newquotation.NewQuotationRepository
 import dadm.csechram.QuotesApp.data.settings.SettingsRepository
 import dadm.csechram.QuotesApp.domain.model.Quotation
@@ -9,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewQuotationViewModel @Inject constructor(private val repository: NewQuotationRepository, private val settingsRepository: SettingsRepository) : ViewModel() {
+class NewQuotationViewModel @Inject constructor(private val manager: NewQuotationManager, private val settingsRepository: SettingsRepository) : ViewModel() {
     //Private properties
     private val quotation : MutableLiveData<Quotation> = MutableLiveData()
     private val isRefreshing : MutableLiveData<Boolean> = MutableLiveData(false)
@@ -42,7 +43,7 @@ class NewQuotationViewModel @Inject constructor(private val repository: NewQuota
         isRefreshing.value = true
         //Coroutine launch
         viewModelScope.launch {
-            repository.getNewQuotation().fold(
+            manager.getNewQuotation().fold(
                 onSuccess = {
                     quotation.value = it},
                 onFailure = {

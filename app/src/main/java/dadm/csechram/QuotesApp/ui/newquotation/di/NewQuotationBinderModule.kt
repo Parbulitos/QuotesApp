@@ -1,9 +1,6 @@
 package dadm.csechram.QuotesApp.ui.newquotation.di
 
-import dadm.csechram.QuotesApp.data.newquotation.NewQuotationDataSource
-import dadm.csechram.QuotesApp.data.newquotation.NewQuotationDataSourceImpl
-import dadm.csechram.QuotesApp.data.newquotation.NewQuotationRepository
-import dadm.csechram.QuotesApp.data.newquotation.NewQuotationRepositoryImpl
+import dadm.csechram.QuotesApp.data.newquotation.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,4 +13,6 @@ abstract class NewQuotationBinderModule {
     abstract fun bindNewQuotationRepository(repository: NewQuotationRepositoryImpl) : NewQuotationRepository
     @Binds
     abstract fun bindNewQuotationDataSource(datasource: NewQuotationDataSourceImpl) : NewQuotationDataSource
+    @Binds
+    abstract fun provideNewQuotationManager(manager: NewQuotationManagerImpl) : NewQuotationManager
 }

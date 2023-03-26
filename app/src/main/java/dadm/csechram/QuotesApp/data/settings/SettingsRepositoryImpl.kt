@@ -7,4 +7,8 @@ class SettingsRepositoryImpl@Inject constructor(val settingsDataSource: Settings
     override fun getUsername(): Flow<String> {
         return settingsDataSource.getUsername()
     }
+
+    override fun getLanguage(): Flow<String> {
+        return settingsDataSource.getLanguage()
+    }
 }
