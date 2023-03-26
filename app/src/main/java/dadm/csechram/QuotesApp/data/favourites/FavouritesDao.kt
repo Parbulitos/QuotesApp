@@ -17,6 +17,6 @@ interface FavouritesDao {
     @Query("SELECT * FROM ${FavouritesContract.tableName.tableName} WHERE idColumn = :id")
     fun getQuotationById(id:String) : Flow<QuotationDto>
     @Query("DELETE FROM ${FavouritesContract.tableName.tableName}")
-    fun deleteAllQuotations()
+    suspend fun deleteAllQuotations()
 
 }

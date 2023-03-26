@@ -9,5 +9,5 @@ interface FavouritesRepository {
     suspend fun deleteQuotation(quote: Quotation)
     fun getAllQuotations() : Flow<List<Quotation>>
     fun getQuotationById(id: String) : Flow<Quotation>
-    fun deleteAllQuotations()
+    suspend fun deleteAllQuotations()
 }

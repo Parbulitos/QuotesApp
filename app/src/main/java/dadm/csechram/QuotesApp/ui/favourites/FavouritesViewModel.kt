@@ -4,13 +4,12 @@ import androidx.lifecycle.*
 import dadm.csechram.QuotesApp.data.favourites.FavouritesRepository
 import dadm.csechram.QuotesApp.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FavouritesViewModel @Inject constructor(private val favouritesRepository: FavouritesRepository): ViewModel() {
-    val favouriteListGetter : LiveData<List<Quotation>> get(){
-        return favouritesRepository.getAllQuotations().asLiveData()
-    }
+    val favouriteListGetter : LiveData<List<Quotation>> = favouritesRepository.getAllQuotations().asLiveData()
     val isDeleteAllVisible = favouriteListGetter.map{list ->
         list.isNotEmpty()
     }
@@ -23,16 +22,19 @@ class FavouritesViewModel @Inject constructor(private val favouritesRepository: 
             val id = (0..99).random().toString()
             Quotation(id,"Quotation $id","Author $id")
         }
-    }
+    }*/
 
     fun deleteAllQuotations(){
-        favouriteList.value = emptyList()
+        viewModelScope.launch {
+            favouritesRepository.deleteAllQuotations()
+        }
+
     }
 
     fun deleteQuotationAtPosition(position: Int){
-        var favouritesListCopy = favouriteList.value?.toMutableList()
-        favouritesListCopy?.removeAt(position)
-        favouriteList.value = favouritesListCopy?: emptyList()
-    }*/
+        viewModelScope.launch {
+            favouritesRepository.deleteQuotation(favouriteListGetter.value!![position])
+        }
+    }
 
 }

@@ -22,7 +22,7 @@ class FavouritesDataSourceImpl @Inject constructor(val favouritesDao: Favourites
         return favouritesDao.getQuotationById(id)
     }
 
-    override fun deleteAllQuotations() {
+    override suspend fun deleteAllQuotations() {
         favouritesDao.deleteAllQuotations()
     }
 }

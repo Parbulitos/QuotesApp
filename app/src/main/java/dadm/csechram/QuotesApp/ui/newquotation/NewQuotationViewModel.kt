@@ -1,6 +1,7 @@
 package dadm.csechram.QuotesApp.ui.newquotation
 
 import androidx.lifecycle.*
+import dadm.csechram.QuotesApp.data.favourites.FavouritesRepository
 import dadm.csechram.QuotesApp.data.newquotation.NewQuotationManager
 import dadm.csechram.QuotesApp.data.newquotation.NewQuotationRepository
 import dadm.csechram.QuotesApp.data.settings.SettingsRepository
@@ -10,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewQuotationViewModel @Inject constructor(private val manager: NewQuotationManager, private val settingsRepository: SettingsRepository) : ViewModel() {
+class NewQuotationViewModel @Inject constructor(private val manager: NewQuotationManager, private val settingsRepository: SettingsRepository, private val favouritesRepository: FavouritesRepository) : ViewModel() {
     //Private properties
     private val quotation : MutableLiveData<Quotation> = MutableLiveData()
     private val isRefreshing : MutableLiveData<Boolean> = MutableLiveData(false)
@@ -56,7 +57,15 @@ class NewQuotationViewModel @Inject constructor(private val manager: NewQuotatio
     }
 
     fun addToFavourites(){
-        favButtonVisible.value = !favButtonVisible.value!!
+        viewModelScope.launch {
+            if(favButtonVisible.value!!){
+                favouritesRepository.addQuotation(quotation.value!!)
+                favButtonVisible.value = !favButtonVisible.value!!
+            }else{
+                favouritesRepository.deleteQuotation(quotation.value!!)
+                favButtonVisible.value = !favButtonVisible.value!!
+            }
+        }
     }
 
     fun resetError(){

@@ -35,7 +35,7 @@ class FavouritesRepositoryImpl @Inject constructor(val favouritesDataSource: Fav
         }
     }
 
-    override fun deleteAllQuotations() {
+    override suspend fun deleteAllQuotations() {
         favouritesDataSource.deleteAllQuotations()
     }
 }
