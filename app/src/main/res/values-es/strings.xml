@@ -15,4 +15,8 @@
     <string name="refresh_string">Actualizar</string>
     <string name="delete_all_quotations_string">Eliminar todas las citas</string>
     <string name="no_internet">Sin conexion a internet</string>
+    <string name="languageEn">Ingles</string>
+    <string name="languageRu">Ruso</string>
+    <string name="languageEnValue">en</string>
+    <string name="languageRuValue">ru</string>
 </resources>

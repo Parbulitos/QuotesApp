@@ -14,4 +14,8 @@
     <string name="refresh_string">Refresh</string>
     <string name="delete_all_quotations_string">Delete all quotations</string>
     <string name="no_internet">No internet connection</string>
+    <string name="languageEn">English</string>
+    <string name="languageRu">Russian</string>
+    <string name="languageEnValue">en</string>
+    <string name="languageRuValue">ru</string>
 </resources>
