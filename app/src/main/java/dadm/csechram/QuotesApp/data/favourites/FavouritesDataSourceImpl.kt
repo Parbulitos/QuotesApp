@@ -6,23 +6,23 @@ import javax.inject.Inject
 
 class FavouritesDataSourceImpl @Inject constructor(val favouritesDao: FavouritesDao): FavouritesDataSource {
 
-    override suspend fun addQuote(quote: QuotationDto) {
-        favouritesDao.addQuote(quote)
+    override suspend fun addQuotation(quote: QuotationDto) {
+        favouritesDao.addQuotation(quote)
     }
 
-    override suspend fun removeQuote(quote: QuotationDto) {
-        favouritesDao.removeQuote(quote)
+    override suspend fun deleteQuotation(quote: QuotationDto) {
+        favouritesDao.deleteQuotation(quote)
     }
 
-    override fun getAllQuotes(): Flow<List<QuotationDto>> {
-        return favouritesDao.getAllQuotes()
+    override fun getAllQuotations(): Flow<List<QuotationDto>> {
+        return favouritesDao.getAllQuotations()
     }
 
-    override fun getQuoteById(id: String): Flow<QuotationDto> {
-        return favouritesDao.getQuoteById(id)
+    override fun getQuotationById(id: String): Flow<QuotationDto> {
+        return favouritesDao.getQuotationById(id)
     }
 
-    override fun deleteAllQuotes() {
-        favouritesDao.deleteAllQuotes()
+    override fun deleteAllQuotations() {
+        favouritesDao.deleteAllQuotations()
     }
 }

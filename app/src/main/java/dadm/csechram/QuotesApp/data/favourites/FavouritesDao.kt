@@ -9,18 +9,14 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FavouritesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addQuote(quote: QuotationDto)
-
+    suspend fun addQuotation(quote: QuotationDto)
     @Delete
-    suspend fun removeQuote(quote: QuotationDto)
-
-    @Query("SELECT * FROM $TABLE_NAME")
-    fun getAllQuotes() : Flow<List<QuotationDto>>
-
-    @Query("SELECT * FROM $TABLE_NAME WHERE idColumn = :id")
-    fun getQuoteById(id:String) : Flow<QuotationDto>
-
-    @Query("DELETE FROM $TABLE_NAME")
-    fun deleteAllQuotes()
+    suspend fun deleteQuotation(quote: QuotationDto)
+    @Query("SELECT * FROM ${FavouritesContract.tableName.tableName}")
+    fun getAllQuotations() : Flow<List<QuotationDto>>
+    @Query("SELECT * FROM ${FavouritesContract.tableName.tableName} WHERE idColumn = :id")
+    fun getQuotationById(id:String) : Flow<QuotationDto>
+    @Query("DELETE FROM ${FavouritesContract.tableName.tableName}")
+    fun deleteAllQuotations()
 
 }

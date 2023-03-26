@@ -5,7 +5,7 @@ object FavouritesContract {
     object tableName {
         const val tableName: String = "FavouriteQuotes"
         const val idColumn: String = "idColumn"
-        const val textColumn: String = "textColumn"
+        const val quoteColumn: String = "textColumn"
         const val authorColumn: String = "authorColumn"
     }
 }

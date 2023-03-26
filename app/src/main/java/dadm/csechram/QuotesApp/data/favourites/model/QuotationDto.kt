@@ -4,15 +4,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.RoomMasterTable.TABLE_NAME
+import dadm.csechram.QuotesApp.data.favourites.FavouritesContract
 
-@Entity(tableName = TABLE_NAME)
+@Entity(tableName = FavouritesContract.tableName.tableName)
 data class QuotationDto(
     @PrimaryKey
-    @ColumnInfo(name = "idColumn")
+    @ColumnInfo(name = FavouritesContract.tableName.idColumn)
     val id: String,
-    @ColumnInfo(name = "quoteColumn")
+    @ColumnInfo(name = FavouritesContract.tableName.quoteColumn)
     val quote: String,
-    @ColumnInfo(name = "authorColumn")
+    @ColumnInfo(name = FavouritesContract.tableName.authorColumn)
     val author: String) {
 
 }
